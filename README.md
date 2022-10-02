@@ -3,7 +3,7 @@
 
 **Ques-1- Explain what the simple List component does.**
 
-**Answer-1-** List is used to store data in ordered format. We use the map() function for traversing the list element, and for updates, we enclosed them between curly braces {}. Here also this List is being used to render data in ordered format. List items are wrapped under WrappedSingleListItem. A handleclick function which we pass to the SingleListItem component by which the background color of that particular item changes. There is also a memo method used in the list component. React reuses the memoized content from the same reference. By memoized, it states that it doesn't re-render unnecessarily. The memo is used to make website speed more efficient and perform better.
+**Answer-1-** List is used to store data in ordered format. We use the map() function for traversing the list element, and for updates, we enclosed them between curly braces {}. Here also this List is being used to render data in ordered format. List items are wrapped under WrappedSingleListItem. A handleclick function which we pass to the SingleListItem component by which the background color of that particular item changes. There is also a memo method used in the list component. React reuses the memoized content from the same reference. The memo is used to make website speed more efficient and perform better.
 
 <hr>
 
