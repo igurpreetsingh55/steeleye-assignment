@@ -88,7 +88,7 @@ WrappedListComponent.propTypes = {
   ),
 };
 
-//The default items array in the provided code was null, and since mapping over null is not possible, we must initialise it with a value.
+//The default items array in the provided code was null, and since mapping over null is not possible, we must initialise it with some value.
 WrappedListComponent.defaultProps = {
   items: [{ text: "First item" }, { text: "Second item" }],
 };
