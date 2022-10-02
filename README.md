@@ -3,7 +3,7 @@
 
 **Ques-1- Explain what the simple List component does.**
 
-**Answer-1-** List is used to store data in ordered format. We use the map() function for traversing the list element, and for updates, we enclosed them between curly braces {}. Here also this List is being used to render data in ordered format. List items are wrapped under WrappedSingleListItem. A handleclick function which we pass to the SingleListItem component by which the background color of that particular item changes. There is also a memo method used in the list component. React reuses the memoized content from the same reference. The memo is used to make website speed more efficient and perform better.
+**Answer-1-** List is used to store data in ordered format. We use the map() function for traversing the list element, and for updates, we enclosed them between curly braces {}. Here also this List is being used to render data in ordered format. List items are wrapped under WrappedSingleListItem. A handleclick function which we pass to the SingleListItem component by which the background color of that particular item changes. There is also a memo method used in the list component. React reuses the memoized content from the same reference. This prevents the component from re-rendering unless the dependencies (props) have changed.The memo is used to make website speed more efficient and perform better.
 
 <hr>
 
@@ -13,7 +13,7 @@
 - const [setSelectedIndex , SelectedIndex] = useState(); <br />
 Here useState Hook is used but the variable selectedIndex and setSelectedIndex should interchange their position.
 because SetSelectedIndex is used to set the value of the SelectedIndex value.
-- In the given code, the default items array was null, and it is not possible to map over null, so we need to initialize it with some value.
+- In the code, the default items array was null, and it is not possible to map over null, so we need to initialize it with some value.
 - While mapping over the array of items, we should have given the key to each item to identify it uniquely as we know key play an important role in rendering each components.
 - Passing of handleclick from WrappedListComponent to SingleListltem was not in bool type. As it is clearly mentioned in wrappedSingleListltem.propTypes is that isSelected proptypes is bool.
 - In WrappedListComponent.propTypes, there is a syntactical error. Instead of using an array, we should have used arrayOf and instead of using shapof, we should have used the shape only.
@@ -32,7 +32,7 @@ const WrappedSingleListItem = ({ index, isSelected, onClickHandler, text }) => {
   return (
     <li
       style={{ backgroundColor: isSelected ? "green" : "red", cursor: "grab" }}
-      //Invalid prop isSelected of type array supplied to WrappedSingleListItem, which expected boolean. Therefore converting it to boolean.
+      //Invalid prop isSelected of type array supplied to WrappedSingleListItem, which expected boolean. So converting it to boolean.
       onClick={() => onClickHandler(Boolean(index))}
     >
       {text}
@@ -51,7 +51,7 @@ const SingleListItem = memo(WrappedSingleListItem);
 
 // List Component
 const WrappedListComponent = ({ items }) => {
-  //const [setSelectedIndex, selectedIndex] = useState();useState variables being misplaced, so interchange their position
+  //const [setSelectedIndex, selectedIndex] = useState();useState variables being misplaced, so interchanging their position
   const [selectedIndex, setSelectedIndex] = useState();
 
   useEffect(() => {
@@ -59,7 +59,7 @@ const WrappedListComponent = ({ items }) => {
   }, [items]);
 
   const handleClick = (index) => {
-    setSelectedIndex(Boolean(index)); //boolean
+    setSelectedIndex(Boolean(index));   //boolean
   };
 
 
@@ -71,7 +71,7 @@ const WrappedListComponent = ({ items }) => {
           text={item.text}
           index={index}
           isSelected={selectedIndex}
-          key={index}  //assign the key
+          key={index}    //assign the key
         />
       ))}
     </ul>
@@ -79,7 +79,7 @@ const WrappedListComponent = ({ items }) => {
 };
 
 //There is a syntactical error in the predefined syntax.
-//Instead of using an array, we should have used arrayOf and instead of using shapOf, we should have used the shape only.
+//Instead of using an array, we should have used arrayOf and instead of using shapOf, we should have used shape.
 WrappedListComponent.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
