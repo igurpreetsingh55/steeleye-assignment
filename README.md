@@ -3,7 +3,7 @@
 
 **Ques-1- Explain what the simple List component does.**
 
-**Answer-1-** List is generally used to store data in ordered format. We use the map() function for traversing the list element, and for updates, we enclosed them between curly braces {}. Here also this List is being used to render data in ordered format. a handleclick function which we pass to the SingleListItem component by which the background color of that particular item changes. There is also a memo method used in the list component. React reuses the memoized content from the same reference. By memoized, it states that it doesn't re-render unnecessarily, The memo is used to make website speed more efficient and perform better.
+**Answer-1-** List is generally used to store data in ordered format. We use the map() function for traversing the list element, and for updates, we enclosed them between curly braces {}. Here also this List is being used to render data in ordered format. a handleclick function which we pass to the SingleListItem component by which the background color of that particular item changes. There is also a memo method used in the list component. React reuses the memoized content from the same reference. By memoized, it states that it doesn't re-render unnecessarily. The memo is used to make website speed more efficient and perform better.
 
 <!--
 // Temprory Answer-1 /////// <br />
@@ -33,10 +33,6 @@ because SetSelectedIndex is used to set the value of the SelectedIndex value.
 
 
 <!--
-////////////////////
-2)What problems / warnings are there with code?
-
-Ans:
 
 1)In our code, as the parent component, which is a wrappedListComponent, has only one state and that is also making direct changes in our child component, which means changing the parent will anyhow change the child, so in such a case, using memo is a waste of memory.
 2)While destructuring the array, we must follow the sequence of occurrence of the value, and when we destructure the array of use state in a given problem, we mismatch the sequence due to which we named the values wrong, or say we altered the names, which cause us to use them incorrectly, which caused us the error.
@@ -46,41 +42,7 @@ Ans:
 6)While calling the call back function inside a child, we should have used the arrow function.
 7)In props check, we set the isselected value to be boolean, but when we pass boolean values as props, the value is converted to a string or number, so make sure to convert that to boolean before using.
 
-/////////
-Passing of handleclick from WrappedListComponent to SingleListltem was not in bool type. As it is clearly mentioned in wrappedSingleListltem.propTypes is that isSelected proptypes is bool.
-
-//////////////////
-2-What problems / warnings are there with code?
-1->const [setSelectedIndex , SelectedIndex] = useState();
-Here useState Hook is used but the variable selectedIndex and setSelectedIndex are should interchange their position
-because SetSelectedIndex is used to set the value of the SelectedIndex value . So for that we can write
-const [SelectedIndex,setSelectedIndex]= useState();
-
-2->WrappedListComponent.defaultProps has items: null. Therefore there is no item to be mapped.
-Fixed code:
-WrappedListComponent.defaultProps = {
-items: [{ text: "First Item" }, { text: "Second Item" }]
-};
-Each child in a list should have a unique "key" prop.
-Fixed code:
-<ul style={{ textAlign: "left" }}>
-{items.map((item, index) => (
-<SingleListItem
-onClickHandler={() => handleClick(index)}
-text={item.text}
-index={index}
-isSelected={selectedIndex}
-key={index}
-/>
-))}
-
-3-> Defining a default prop as null is not recommended.
-WrappedListComponent.defaultProps = {
-items: null,
-};
-
-////////
---->
+-->
 <hr>
 
 **Ques-3- Please fix, optimize, and/or modify the component as much as you think is necessary.**
@@ -96,6 +58,7 @@ const WrappedSingleListItem = ({ index, isSelected, onClickHandler, text }) => {
     <li
       style={{ backgroundColor: isSelected ? "green" : "red", cursor: "grab" }}
       //Invalid prop isSelected of type array supplied to WrappedSingleListItem, expected boolean. Therefore converting it to boolean.
+      //Converting it to boolean as invalid prop isSelected of type array supplied to WrappedSingleListItem expected bollean.
       onClick={() => onClickHandler(Boolean(index))}
     >
       {text}
