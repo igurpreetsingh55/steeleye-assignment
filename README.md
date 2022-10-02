@@ -33,7 +33,6 @@ const WrappedSingleListItem = ({ index, isSelected, onClickHandler, text }) => {
     <li
       style={{ backgroundColor: isSelected ? "green" : "red", cursor: "grab" }}
       //Invalid prop isSelected of type array supplied to WrappedSingleListItem, expected boolean. Therefore converting it to boolean.
-      //Converting it to boolean as invalid prop isSelected of type array supplied to WrappedSingleListItem expected bollean.
       onClick={() => onClickHandler(Boolean(index))}
     >
       {text}
